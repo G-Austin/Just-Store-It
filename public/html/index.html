@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <!--Import Google Icon Font-->
+	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	 <!-- Compiled and minified CSS -->
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	 <link rel="stylesheet" href="../css/style.css">
+	 <!--Let browser know website is optimized for mobile-->
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	 <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+</head>
+
+<body>
+
+	<nav class=" teal lighten-2">
+	    <div class="nav-wrapper">
+	    	<div class="row">
+		    	<div class="col s12 m4">
+			    	<a href="#" class="brand-logo left hide-on-small-and-down"><span class='logo'>Just |</span><span class=' logoRight orange accent-1'> STORE IT</span></a>
+			    </div>
+			    <div class="col s12 m3 offset-m9">
+					<select id='boxSelection' class="browser-default right">
+						<option value='' disabled selected>SEARCH BOXES</option>
+					</select>
+				</div>
+			</div>
+	    </div>
+  	</nav>
+
+  	<!-- <div id='map'> </div> -->
+
+	<!-- ===================CAROUSEL ===============-->
+	<div id='carouselBox' class="carousel">
+	    <a class="carousel-item" href="#one!"><img class='materialboxed' src="../img/250x250.png"></a>
+	    <a class="carousel-item" href="#two!"><img class='materialboxed' src="../img/250x250.png"></a>
+	    <a class="carousel-item" href="#three!"><img class='materialboxed' src="../img/250x250.png"></a>
+	    <a class="carousel-item" href="#four!"><img class='materialboxed' src="../img/250x250.png"></a>
+	    <a class="carousel-item" href="#five!"><img class='materialboxed' src="../img/250x250.png"></a>
+  	</div>
+  	<div class='center-align'>
+    	<a id='addButton' class="waves-effect waves-light btn-large orange accent-1"><i class="material-icons right">add</i>ADD A BOX</a>
+	</div>
+
+	<!-- ===================SEARCH RESULTS ===============-->
+  	<div id='searchSection' class="container" hidden='true'>
+		<div class="col s12">
+		    <h4 class="header">Search Results</h4>
+		    <div class="card horizontal">
+		    	<div class="card-image">
+		    		<div id='map' class='materialboxed'></div>
+		      	</div>
+		      	<div class="card-stacked">
+		        	<div class="card-content">
+		       <!-- This is where the search results append -->
+		          		<div id='displayResults'></div>
+		        	</div>
+		        <div class="card-action">
+		        <!--========================================
+							START OF UPDATE MODAL FORM
+				========================================-->
+			    	<div id='vboxBtn' class='col s12' hidden='true'>
+			    	  <!-- Modal Trigger -->
+					<a class="waves-effect waves-light btn modal-trigger" href="#updateModal">UPDATE<i class="material-icons right">mode_edit</i></a>
+
+					  <!-- Modal Structure -->
+						<div id="updateModal" class="modal">
+						   <div class="modal-content">
+						   		<h4>UPDATE BOX</h4>
+						      	<p>Updated forms will replace the existing input. </p>
+						    </div>
+						    <div class="modal-footer">
+								<input placeholder="Priority (1)" class='vboxUpdate' id="updatePriority" type="text">
+								<input placeholder="Category (Kitchen)" class='vboxUpdate' id="updateCategory" type="text">
+								<input placeholder="Address" class='vboxUpdate' id="updateAddress" type="text">
+								<div id='textBox2' class="row">
+						    		<form class="col s12">
+						      			<div id='textBox2' class="row">
+						        			<div class="input-field col s12">
+						          				<textarea id="vboxUpdate" class="materialize-textarea"></textarea>
+						          				<label for="textarea2">Items</label>
+						        			</div>
+						      			</div>
+						    		</form>
+								</div>
+								<a id ='updateBtn' class="waves-effect waves-light btn">Submit</a><a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">close</a>
+							</div>
+						</div>
+	          <!--========================================
+						START OF DESTROY MODAL
+				========================================-->
+				  	  <!-- Modal Trigger -->
+					<a id='destroy' class="waves-effect waves-light btn modal-trigger" href="#destroyModal">DESTROY<i class="material-icons right">cancel</i></a>
+					<div id="destroyModal" class="modal">
+					   	<div class="modal-content">
+					   		<h4>ARE YOU SURE?</h4>
+					      	<hr>
+					    </div>
+					    <div class="modal-footer">
+					    	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">close</a>
+					    	<a id ='destroyBtn' class="waves-effect waves-light btn right">DESTROY</a>
+					    </div>
+					</div>
+					<!--========================================
+						END OF DESTROY MODAL FORM
+					========================================-->
+		      	</div>
+		    	</div>
+		    	</div>
+	  		</div>
+  		</div><!-- col -->
+  	</div> <!-- container -->
+<!-- ===================END OF SEARCH RESULTS ===============-->
+
+<!-- ================START OF ADD CARDS ==============-->
+
+	<div class="container" id='addCard' hidden='true'>
+		<div class="row">
+			<div class="card col s12 m5">
+				<div class="card-image waves-effect waves-block waves-light">
+			      <img id='cardImg' class="activator" src="../img/box250x250.jpg">
+			    </div>
+			    <div class="card-content">
+			      <span class="card-title activator teal-text lighten-2 center-align">ADD NEW BOX<a id='cardBtn' class="btn btn-floating pulse orange accent-1"><i class="material-icons">add</i></a></span>
+			    </div>
+			    <div class="card-reveal">
+				<input placeholder="Name of box" class='vboxInput' id="vboxName" type="text">
+				<input placeholder="Priority (1)" class='vboxInput' id="priority" type="text">
+				<input placeholder="Category (Kitchen)" class='vboxInput' id="category" type="text">
+				<input placeholder="Address" class='vboxInput' id="address" type="text">
+				<div id='textBox1' class="row">
+				    <form class="col s12">
+				      <div id='textBox1' class="row">
+				        <div class="input-field col s12">
+				          <textarea id="vboxItems" class="materialize-textarea"></textarea>
+				          <label for="textarea1">Items</label>
+				        </div>
+				      </div>
+				    </form>
+				</div>
+				<span class="card-title grey-text text-darken-4"><i class="material-icons right red-text">cancel</i></span>
+				<a id ='vboxSubmit' class="waves-effect waves-light btn right">Submit</a>
+			    </div>
+			</div>
+
+			<div class="card col s12 m5 offset-m2">
+				<div class="card-image waves-effect waves-block waves-light">
+			      <img id='cardImg' class="activator" src="../img/multibox.png">
+			    </div>
+			    <div class="card-content">
+			      <span class="card-title activator teal-text lighten-2 center-align">EDIT ITEMS IN BOX<a id='cardBtn' class="btn btn-floating pulse"><i class="material-icons">edit</i></a></span>
+			    </div>
+			    <div class="center-align card-reveal">
+				<h5 class='center-align bold'>UPADTE | ADD | DELETE</h5>
+				<hr>
+				<a class="btn-floating btn-large waves-effect waves-light teal lighten-2"><i class="material-icons">border_color</i></a>
+				<a class="btn-floating btn-large waves-effect waves-light orange accent-1"><i class="material-icons">add</i></a>
+				<a class="btn-floating btn-large waves-effect waves-light grey darken-3"><i class="material-icons">delete</i></a>
+				<div id='textBox1' class="row">
+				    <form class="col s12">
+				      <div id='textBox1' class="row">
+				        <div class="input-field col s12">
+				          <textarea id="vboxItems" class="materialize-textarea"></textarea>
+				          <label for="textarea1">Items</label>
+				        </div>
+				      </div>
+				    </form>
+				</div>
+
+				<span class="card-title grey-text text-darken-4"><i class="material-icons right red-text">cancel</i></span>
+			    </div>
+			</div>
+		</div> <!-- row -->
+	</div> <!-- container -->
+
+	<div class="footer-copyright">
+    </div>
+    <script>
+
+	function initMap() {
+
+		// var home = ({lat, lng});
+
+		map = new google.maps.Map(document.getElementById('map'), {
+		    zoom: 15,
+		    // center: home,
+		});
+		// document.getElementById('vboxSubmit').addEventListener('click', function() {
+		//     geocodeAddress(geocoder, map);
+		// });
+	}
+
+
+    </script>
+
+
+	<!--Import jQuery before materialize.js-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+	<!-- Custom Script -->
+	<script src="js/virtualBox.js" type="text/javascript"></script>
+	<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn2OGBwrv8ls4H6VRP6AII944ts4-LXUk&callback=initMap">
+	</script>
+</body>
+ </html>
