@@ -161,7 +161,9 @@
 					<!--========================================
 						END OF ADD BOX MODAL FORM
 					========================================-->
-
+			<!-- =======================================
+			 EDIT ITEM CARD
+			======================================= -->
 			<div class="card col s12 m5 offset-m2">
 				<div class="card-image waves-effect waves-block waves-light">
 			      <img id='cardImg' class="activator" src="../img/multibox.png">
@@ -185,8 +187,20 @@
 				    </form>
 				</div>
 				<span class="card-title grey-text text-darken-4"><i class="material-icons right red-text">cancel</i></span>
-				<a id='editUpdate' class="waves-effect waves-light btn right teal lighten-2"><i class="material-icons right">border_color</i>UPDATE</a>
-			    </div>			    
+				 <!-- Modal Trigger -->
+				<a id='editModal' class="waves-effect waves-light btn modal-trigger right teal lighten-2" href="#editRefreshModal">UPDATE ITEM<i class="material-icons right ">border_color</i></a>
+			    </div>	
+			    <!-- UPDATE ITEM MODAL -->
+			    <div id="editRefreshModal" class="modal center-align">
+				   	<div class="modal-content center-align">
+				   		<h4>PLEASE CONFIRM<br>UPDATE</h4>
+				      	<hr>
+				    </div>				   
+				    <div class="modal-footer">
+				    	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">close</a>
+				    	<a id='editUpdate' value='Refresh Page' onClick='window.location.reload();' class="waves-effect waves-light btn right teal lighten-2"><i class="material-icons right">border_color</i>UPDATE</a>
+				    </div>
+				</div>
 			</div>
 		</div> <!-- row -->
 	</div> <!-- container -->

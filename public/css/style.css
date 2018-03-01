@@ -121,6 +121,11 @@ nav {
 	height: 250px;
 }
 
+#editRefreshModal {
+	width: 400px;
+	height: 250px;
+}
+
 #searchSection {
 	margin-bottom: 10px;
 }

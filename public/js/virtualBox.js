@@ -3,6 +3,7 @@ $(document).ready(function() {
   $('.carousel').carousel();
   $('.materialboxed').materialbox();
   $('#addRefreshModal').modal();
+  $('#editRefreshModal').modal();
 
   //ADD A BOX BUTTON TO SHOW CARD VIEW
   $('#addButton').on('click', function(event) {
