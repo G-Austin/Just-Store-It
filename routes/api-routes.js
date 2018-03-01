@@ -57,6 +57,21 @@ module.exports = function(app) {
     });
   }); 
 
+  //Update an item
+  app.post("/api/updateItem", function(req, res) {
+    console.log("VirtualBox Data:");
+    console.log(req.body);
+    db.VirtualBox.update({
+      item_description: req.body.item_description
+    }, {
+      where: {
+        box_name: req.body.box_name
+      }
+    }).then(function(dbVirtualBox) {
+      res.json(dbVirtualBox);
+    });
+  }); 
+
   //Delete
   app.post('/api/delete', function(req, res) {
     console.log("VirtualBox Data:");
@@ -66,7 +81,20 @@ module.exports = function(app) {
         box_name: req.body.box_name
       }
     });
-  });  
+  }); 
+
+    //Delete
+  app.post('/api/deleteItem', function(req, res) {
+    console.log("VirtualBox Data:");
+    console.log(req.body)
+    db.VirtualBox.destroy({
+      item_description: req.body.item_description
+    }, {
+      where: {
+        box_name: req.body.box_name
+      }
+    });
+  }); 
 }; //Module Export
 
 

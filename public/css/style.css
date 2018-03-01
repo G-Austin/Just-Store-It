@@ -1,26 +1,3 @@
-/* .nav-wrapper {
-  margin-bottom: 20px;
-} */
-#nav-bar {
-  margin-bottom: 20px;
-}
-
-#google-map {
-  height: 400px;
-}
-
-.top-half {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-#item-list {
-  margin-top: 10px;
-}
-/*=====================
-khoi
-=====================*/
-
 body {
 	display: flex;
 	min-height: 100vh;
@@ -99,7 +76,7 @@ nav {
 }
 
 #vboxSubmit {
-	margin-bottom: 17px;
+	background-color: #fd8;
 }
 
 #textBox1 {
@@ -125,24 +102,44 @@ nav {
 	padding: 0;
 }
 
+#destroy {
+	background-color: #424242;
+}
+
+#destroyBtn {
+	background-color: #424242;
+}
+
 #destroyModal {
 	width: 400px;
 	height: 200px;
 	padding: 20px;
 }
 
-#searchSection {
-	margin-bottom: 50px;
+#addRefreshModal {
+	width: 400px;
+	height: 250px;
 }
 
-.footer-copyright {
-	border-top: 5px solid #fd8;
-	height: 250px;
-	background-color: #5bb;
+#searchSection {
+	margin-bottom: 10px;
+}
+
+.footer{
+	border-top: 5px solid #5bb;
+	height: 300px;
+	background: url(../img/back2.png);
 }
 
 #map {
-	border: 1px solid red;
 	height: 250px;
 	width: 250px;
+}
+
+#updatedSelection {
+	margin-bottom: 15px;
+}
+
+#updatedItems {
+	margin: 0px;
 }
