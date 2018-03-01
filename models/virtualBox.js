@@ -11,12 +11,12 @@ module.exports = function(sequelize, DataTypes) {
     item_description: {
       type: DataTypes.TEXT,
       allowNull: false,
-    },   
+    },
     category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    address: { type: DataTypes.STRING 
+    address: { type: DataTypes.STRING
     },
     latitude: {
       type: DataTypes.FLOAT,
@@ -38,4 +38,3 @@ module.exports = function(sequelize, DataTypes) {
   });
   return VirtualBox;
 };
-
