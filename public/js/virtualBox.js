@@ -8,9 +8,9 @@ $(document).ready(function() {
   //ADD A BOX BUTTON TO SHOW CARD VIEW
   $('#addButton').on('click', function(event) {
 		$('#carouselBox').hide();
-		$('#addButton').hide();
 		$('#addCard').show();
 		$('#textBox3').hide();
+		$('#header').hide();
 
   });
 
