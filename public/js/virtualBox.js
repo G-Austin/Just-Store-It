@@ -30,7 +30,7 @@ $(document).ready(function() {
 		                console.log('results', results);
 		                var marker = new google.maps.Marker({
 		                	// center: home1,
-		                    map: map,
+		                    map: themap,
 		                    position: results[0].geometry.location,
 		                });
 		                var lat = results[0].geometry.location.lat();
@@ -113,6 +113,8 @@ $(document).ready(function() {
 	   	$('#header').hide();
 	   	
 	   	$.get('/api/' + newBoxSelected, function(data) {
+			  themap.setCenter(new google.maps.LatLng(data[0].latitude, data[0].longitude));
+
 			displayResults(data);
 			})
 	    	console.log(newBoxSelected);
