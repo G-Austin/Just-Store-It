@@ -5,15 +5,6 @@ $(document).ready(function() {
   $('#addRefreshModal').modal();
   $('#editRefreshModal').modal();
 
-  //ADD A BOX BUTTON TO SHOW CARD VIEW
-  $('#addButton').on('click', function(event) {
-		$('#carouselBox').hide();
-		$('#addCard').show();
-		$('#textBox3').hide();
-		$('#header').hide();
-
-  });
-
 // =========================
 // START OF ADD VIRTUAL BOX
 // =========================
@@ -58,6 +49,12 @@ $(document).ready(function() {
 						.done(function(data) {
 							console.log('data received', data);
 						});
+						//Clears all inputs after submission
+						$('#vboxName').val('');
+						$('#priority').val('');
+						$('#category').val('');
+						$('#address').val('');
+						$('#vboxItems').val('');
 
 		            } else {
 		                alert('Geocode was not successful for the following reason: ' + status);
@@ -68,12 +65,6 @@ $(document).ready(function() {
 		}
 	});
 
-		//Clears all inputs after submission
-		$('#vboxName').val('');
-		$('#priority').val('');
-		$('#category').val('');
-		$('#address').val('');
-		$('#vboxItems').val('');
 
 		console.log('name: ', vbName);
 		console.log('priority: ', vbPriority);
@@ -119,6 +110,7 @@ $(document).ready(function() {
 	   	$('#addButton').hide();
 	   	$('#searchSection').slideDown(1000);
 	   	$('#addCard').show();
+	   	$('#header').hide();
 	   	
 	   	$.get('/api/' + newBoxSelected, function(data) {
 			displayResults(data);
