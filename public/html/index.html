@@ -9,6 +9,7 @@
 	 <!--Let browser know website is optimized for mobile-->
 	 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	 <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+	 <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
 </head>
 
 <body>
@@ -16,10 +17,10 @@
 	<nav class=" teal lighten-2">
 	    <div class="nav-wrapper">
 	    	<div class="row">
-		    	<div class="col s12 m4">
-			    	<a href="#" class="brand-logo left hide-on-small-and-down"><span class='logo'>Just |</span><span class=' logoRight orange accent-1'> STORE IT</span></a>
+		    	<div class="col s12 m3">			
+			    	<a href="#" class="brand-logo left hide-on-small-and-down"><span class='logo'>Just |</span><span class=' logoLeft orange accent-1'> STORE IT</span></a>
 			    </div>
-			    <div class="col s12 m3 offset-m9">
+			    <div class="col s12  m3 offset-m6">
 					<select id='boxSelection' class="browser-default right">
 						<option value='' disabled selected>SEARCH BOXES</option>
 					</select>
@@ -28,35 +29,24 @@
 	    </div>
   	</nav>
 
-  	<!-- <div id='map'> </div> -->
-
-	<!-- ===================CAROUSEL ===============-->
-	<div id='carouselBox' class="carousel">
-	    <a class="carousel-item" href="#one!"><img class='materialboxed' src="../img/carousel1.jpg"></a>
-	    <a class="carousel-item" href="#two!"><img class='materialboxed' src="../img/carousel2.jpg"></a>
-	    <a class="carousel-item" href="#three!"><img class='materialboxed' src="../img/carousel3.png"></a>
-	    <a class="carousel-item" href="#four!"><img class='materialboxed' src="../img/carousel4.jpg"></a>
-	    <a class="carousel-item" href="#five!"><img class='materialboxed' src="../img/carousel5.jpg"></a>
-  	</div>
-  	<div class='center-align'>
-    	<a id='addButton' class="waves-effect waves-light btn-large orange accent-1">ADD | EDIT A BOX</a>
+  	<div class="container">
+		<h1 id='header'>A moving management tool where users can pack and unpack seamlessly by managing boxes at multiple locations.</h1>
 	</div>
-
+	
 	<!-- ===================SEARCH RESULTS ===============-->
   	<div id='searchSection' class="container" hidden='true'>
 		<div class="col s12">
 		    <h4 class="header">Search Results</h4>
 		    <div class="card horizontal">
 		    	<div class="card-image">
-
-						<div id='map' class='materialboxed'></div>
+		    		<div id='map' class='materialboxed'></div>
 		      	</div>
 		      	<div class="card-stacked">
 		        	<div class="card-content">
 		       <!-- This is where the search results append -->
 		          		<div id='displayResults'></div>
 		        	</div>
-		        <div class="card-action">
+		        <div class="card-action">		       
 		        <!--========================================
 							START OF UPDATE MODAL FORM
 				========================================-->
@@ -84,12 +74,11 @@
 						      			</div>
 						    		</form>
 								</div>
-								<button id='updateBtn' value='Refresh Page' onClick='window.location.reload();'class="waves-effect waves-light btn">UPDATE</button>
-								<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">close</a>
+								<a id ='updateBtn' value='Refresh Page' onClick='window.location.reload();'class="waves-effect waves-light btn">UPDATE</a><a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">close</a>
 							</div>
 						</div>
 	          <!--========================================
-						START OF DESTROY MODAL
+						START OF DESTROY MODAL 
 				========================================-->
 				  	  <!-- Modal Trigger -->
 					<a id='destroy' class="waves-effect waves-light btn modal-trigger " href="#destroyModal">DESTROY<i class="material-icons right ">delete</i></a>
@@ -109,21 +98,21 @@
 		      	</div>
 		    	</div>
 		    	</div>
-	  		</div>
+	  		</div> 
   		</div><!-- col -->
   	</div> <!-- container -->
 <!-- ===================END OF SEARCH RESULTS ===============-->
 
 <!-- ================START OF ADD CARDS ==============-->
-
-	<div class="container" id='addCard' hidden='true'>
+	
+	<div class="container" id='addCard'>
 		<div class="row">
 			<div class="card col s12 m5">
 				<div class="card-image waves-effect waves-block waves-light">
 			      <img id='cardImg' class="activator" src="../img/box250x250.jpg">
 			    </div>
 			    <div class="card-content">
-			      <span class="card-title activator teal-text lighten-2 center-align">ADD NEW BOX<a id='cardBtn' class="btn btn-floating pulse orange accent-1"><i class="material-icons">add</i></a></span>
+			      <span class="card-title activator teal-text lighten-2 center-align">ADD NEW BOX<a id='cardBtn' class="btn btn-floating pulse orange accent-1"><i class="material-icons">add</i></a></span>			   
 			    </div>
 			    <div class="card-reveal">
 				<input placeholder="Name of box" class='vboxInput' id="vboxName" type="text">
@@ -144,17 +133,17 @@
 				<span class="card-title grey-text text-darken-4"><i class="material-icons right red-text">cancel</i></span>
 				 <!-- Modal Trigger -->
 				<a id='addRefresh' class="waves-effect waves-light btn modal-trigger right orange accent-1" href="#addRefreshModal">ADD BOX<i class="material-icons right ">add</i></a>
-			    </div>
+			    </div>			    
 			</div>
 
 			 <!--========================================
-						START OF ADD BOX MODAL
+						START OF ADD BOX MODAL 
 				========================================-->
 					<div id="addRefreshModal" class="modal center-align">
 					   	<div class="modal-content center-align">
 					   		<h4>PLEASE CONFIRM<br>BOX CREATION</h4>
 					      	<hr>
-					    </div>
+					    </div>				   
 					    <div class="modal-footer">
 					    	<a href="#!" value='Refresh Page' onClick='window.location.reload();' class="modal-action modal-close waves-effect waves-green btn-flat right">close</a>
 					    	<a id ='vboxSubmit' class="waves-effect waves-light btn right"><i class="material-icons right">add</i>CONFIRM</a>
@@ -163,18 +152,20 @@
 					<!--========================================
 						END OF ADD BOX MODAL FORM
 					========================================-->
-
+			<!-- =======================================
+			 EDIT ITEM CARD
+			======================================= -->
 			<div class="card col s12 m5 offset-m2">
 				<div class="card-image waves-effect waves-block waves-light">
 			      <img id='cardImg' class="activator" src="../img/multibox.png">
 			    </div>
 			    <div class="card-content">
-			      <span class="card-title activator teal-text lighten-2 center-align">EDIT ITEMS IN BOX<a id='cardBtn' class="btn btn-floating pulse"><i class="material-icons">edit</i></a></span>
+			      <span class="card-title activator teal-text lighten-2 center-align">EDIT ITEMS IN BOX<a id='cardBtn' class="btn btn-floating pulse"><i class="material-icons">edit</i></a></span>			   
 			    </div>
 			    <div class="center-align card-reveal">
 			    	<select id='updatedSelection' class="browser-default right">
-							<option value='' disabled selected>CHOOSE A BOX TO EDIT</option>
-						</select>
+						<option value='' disabled selected>CHOOSE A BOX TO EDIT</option>
+					</select>
 				<div id="currentItems" class='red-text'></div>
 				<div id='textBox3' class="row">
 				    <form class="col s12">
@@ -187,15 +178,27 @@
 				    </form>
 				</div>
 				<span class="card-title grey-text text-darken-4"><i class="material-icons right red-text">cancel</i></span>
-				<button id='editUpdate' class="waves-effect waves-light btn right teal lighten-2"><i class="material-icons right">border_color</i>UPDATE</button>
-			    </div>
+				 <!-- Modal Trigger -->
+				<a id='editModal' class="waves-effect waves-light btn modal-trigger right teal lighten-2" href="#editRefreshModal">UPDATE ITEM<i class="material-icons right ">border_color</i></a>
+			    </div>	
+			    <!-- UPDATE ITEM MODAL -->
+			    <div id="editRefreshModal" class="modal center-align">
+				   	<div class="modal-content center-align">
+				   		<h4>PLEASE CONFIRM<br>UPDATE</h4>
+				      	<hr>
+				    </div>				   
+				    <div class="modal-footer">
+				    	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">close</a>
+				    	<a id='editUpdate' value='Refresh Page' onClick='window.location.reload();' class="waves-effect waves-light btn right teal lighten-2"><i class="material-icons right">border_color</i>UPDATE</a>
+				    </div>
+				</div>
 			</div>
 		</div> <!-- row -->
 	</div> <!-- container -->
 <!-- 	====================END OF CARDS==================== -->
 	<div class="footer">
     </div>
-    <script>
+    <!-- <script>
    	function initMap() {
 
 		var home = ({lat: 37.871853, lng: -122.258423});
@@ -204,14 +207,13 @@
 		    center: home,
 		});
 	}
-    </script>
+		</script> -->
+	
 
-
-	<div id="map"></div>
+  
+    <!-- <div id="map"></div> -->
 	 <!-- Replace the value of the key parameter with your own API key.  -->
-	<script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn2OGBwrv8ls4H6VRP6AII944ts4-LXUk&callback=initMap">
-	</script>
+	
 
 
 	<!--Import jQuery before materialize.js-->
@@ -221,8 +223,10 @@
 
 	<!-- Custom Script -->
 	<script src="js/virtualBox.js" type="text/javascript"></script>
-	<script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn2OGBwrv8ls4H6VRP6AII944ts4-LXUk&callback=initMap">
+	<script src="js/map.js" type="text/javascript"></script>
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn2OGBwrv8ls4H6VRP6AII944ts4-LXUk&callback=initMap">
 	</script>
+	
 </body>
 </html>

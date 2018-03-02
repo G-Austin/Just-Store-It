@@ -7,13 +7,13 @@ function initMap() {
   });
 
   // Create a <script> tag and set the USGS URL as the source.
-  var script = document.createElement('script');
+  /* var script = document.createElement('script');
   // This example uses a local copy of the GeoJSON stored at
   // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
   script.src = 'http://localhost:3306/api/all';
   document.getElementsByTagName('head')[0].appendChild(script);
 }
-
+ */
 // Loop through the results array and place a marker for each
 // set of coordinates.
 window.eqfeed_callback = function(results) {
@@ -26,4 +26,5 @@ window.eqfeed_callback = function(results) {
       map: map
     });
   }
+}
 }
