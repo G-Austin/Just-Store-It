@@ -3,15 +3,7 @@ $(document).ready(function() {
   $('.carousel').carousel();
   $('.materialboxed').materialbox();
   $('#addRefreshModal').modal();
-
-  //ADD A BOX BUTTON TO SHOW CARD VIEW
-  $('#addButton').on('click', function(event) {
-		$('#carouselBox').hide();
-		$('#addButton').hide();
-		$('#addCard').show();
-		$('#textBox3').hide();
-
-  });
+  $('#editRefreshModal').modal();
 
 // =========================
 // START OF ADD VIRTUAL BOX
@@ -24,7 +16,7 @@ $(document).ready(function() {
 		var vbCategory = $('#category').val().trim().toUpperCase();
 		var vbAddress = $('#address').val().trim().toUpperCase();
 		var vbitems = $('#vboxItems').val().trim().toUpperCase();
-
+	
 	$.get('/api/all', function(data) {
 	//checks for blank fields or duplicate box names
 		var notPresent = data.map(i => i.box_name).indexOf(vbName) == -1;
@@ -52,11 +44,17 @@ $(document).ready(function() {
 							address: vbAddress,
 							item_description: vbitems,
 							lat: lat,
-							lng: lng
+							lng: lng		
 						})
 						.done(function(data) {
 							console.log('data received', data);
 						});
+						//Clears all inputs after submission
+						$('#vboxName').val('');
+						$('#priority').val('');
+						$('#category').val('');
+						$('#address').val('');
+						$('#vboxItems').val('');
 
 		            } else {
 		                alert('Geocode was not successful for the following reason: ' + status);
@@ -67,12 +65,6 @@ $(document).ready(function() {
 		}
 	});
 
-		//Clears all inputs after submission
-		$('#vboxName').val('');
-		$('#priority').val('');
-		$('#category').val('');
-		$('#address').val('');
-		$('#vboxItems').val('');
 
 		console.log('name: ', vbName);
 		console.log('priority: ', vbPriority);
@@ -118,7 +110,8 @@ $(document).ready(function() {
 	   	$('#addButton').hide();
 	   	$('#searchSection').slideDown(1000);
 	   	$('#addCard').show();
-
+	   	$('#header').hide();
+	   	
 	   	$.get('/api/' + newBoxSelected, function(data) {
 			displayResults(data);
 			})
@@ -127,7 +120,7 @@ $(document).ready(function() {
 
 		function displayResults(data) {
 			if (data.length !== 0) {
-
+				
 				for (var i = 0; i < data.length; i++) {
 
 					var div = $('<div>');
@@ -142,7 +135,7 @@ $(document).ready(function() {
 
 				}
 			}
-		}
+		}	
 	// =================================
 	// END OF BOX OPTIONS AND DISPLAY
 	// =================================
@@ -150,53 +143,28 @@ $(document).ready(function() {
 	// =============================
 	// START OF UPDATE MODAL BUTTON
 	// =============================
-  function editBox() {
-    var currentBox = $(this).data("boxSelected");
-    $(this).children().hide();
-    $(this).children("input.edit").val(currentBox.text);
-    $(this).children("input.edit").show();
-    $(this).children("input.edit").focus();
-  }
 
 	$(document).ready(function(){
 	    $('#updateModal').modal();
 	    $('#updateBtn').on('click', function() {
-        // console.log("update button clicked");
-		    // var boxSelected = $('#boxSelection').val();
-        // console.log($(this));
-        // console.log("boxSelection", boxSelected);
 
-
-
+		    var boxSelected = $('#boxSelection').val();
 		    $.get('/api/' + boxSelected, function(data) {
-          // var existingItems = data[0].item_description
-          // console.log("existingItems", existingItems);
-          // var itemArray = [existingItems];
-          // var newItem = $('#vboxUpdate').val().trim().toUpperCase();
-          // itemArray.push(newItem);
-          console.log('updateBoxItems', updateBoxItems);
-          console.log("newItem", newItem);
-          console.log("itemArray", itemArray);
-
-
 		    	for (var i = 0; i < data.length; i++) {
-            var updatePriority = $('#updatePriority').val().trim();
-            var updateCategory = $('#updateCategory').val().trim().toUpperCase();
-            var updateAddress = $('#updateAddress').val().trim().toUpperCase();
-            // var updateitems = itemArray.join(",").toUpperCase();
-            //var updateitems = $('#updatedItems').val().trim().toUpperCase();
-            // $('#vboxUpdate').val().trim().toUpperCase();
+					var updatePriority = $('#updatePriority').val().trim();
+					var updateCategory = $('#updateCategory').val().trim().toUpperCase();
+					var updateAddress = $('#updateAddress').val().trim().toUpperCase();
+					var updateitems = $('#vboxUpdate').val().trim().toUpperCase();
 				}
 
 				if (updatePriority !== '' && updateCategory !== '' && updateAddress !== '' && updateitems !== '') {
-
+			
 					$.post('/api/update', {
-
 						box_name: boxSelected,
 						priority: updatePriority,
 						category: updateCategory,
 						address: updateAddress,
-						item_description: updateitems
+						item_description: updateitems		
 					})
 					.then(function(data) {
 					});
@@ -207,8 +175,8 @@ $(document).ready(function() {
 					$('#updateCategory').val('');
 					$('#updateAddress').val('');
 					$('#vboxUpdate').val('');
-
-					console.log('BOX: ', boxSelected);
+					
+					console.log('BOX: ', boxSelected);			
 					console.log('priority: ', updatePriority);
 					console.log('category: ', updateCategory);
 					console.log('Address: ', updateAddress);
@@ -280,7 +248,7 @@ $(document).ready(function() {
 	    var updateBoxSelected = $('#updatedSelection').val();
 	   	$('#textBox3').show();
 	   	$('#currentItems').empty();
-
+	   	
 	   	$.get('/api/' + updateBoxSelected, function(data) {
 			displayUpdate(data);
 			})
@@ -289,7 +257,7 @@ $(document).ready(function() {
 
 		function displayUpdate(data) {
 			if (data.length !== 0) {
-
+				
 				for (var i = 0; i < data.length; i++) {
 
 					var div = $('<div>');
@@ -297,46 +265,32 @@ $(document).ready(function() {
 					$('#currentItems').append(div);
 				}
 			}
-		}
+		}	
 
 // ==================CODE FOR UPDATING AN ITEM================
 	$(document).ready(function(){
 	    $('#editUpdate').on('click', function() {
-        var boxSelected = $( "#updatedSelection option:selected" ).text();
-          console.log("boxSelected", boxSelected);
 
 		    var updateSelected = $('#updatedSelection').val();
 		    $.get('/api/' + updateSelected, function(data) {
-
-          var updateBoxItems = $('#updatedItems').val().trim().toUpperCase();
-          var existingItems = data[0].item_description
-          console.log("existingItems", existingItems);
-          var itemArray = [existingItems];
-          var newItem = $('#vboxUpdate').val().trim().toUpperCase();
-          itemArray.push(updateBoxItems);
-          console.log('updateBoxItems', updateBoxItems);
-          console.log("newItem", newItem);
-          console.log("itemArray", itemArray);
-
 		    	for (var i = 0; i < data.length; i++) {
-            var updateitems = itemArray.join(",").toUpperCase();
-
+					var updateBoxItems = $('#updatedItems').val().trim().toUpperCase();
 				}
 
 				if (updateBoxItems !== '') {
-
+			
 					$.post('/api/updateItem', {
 						box_name: updateSelected,
-						item_description: updateBoxItems
+						item_description: updateBoxItems		
 					})
 					.then(function(data) {
 					});
 
 				//Clears all inputs after submission
 					$('#updatedItems').val('');
-
-					console.log('BOX: ', updateSelected);
-					console.log('updateBoxItems ', updateBoxItems);
+					
+					console.log('BOX: ', updateSelected);			
+					console.log('vboxItems: ', updateBoxItems);
 				} else {
 					alert('Missing input');
 				}

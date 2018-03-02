@@ -3,6 +3,7 @@
     "username": "root",
     "password": "",
     "port": "3306",
+
     "database": "justStoreIt",
     "host": "localhost",
     "dialect": "mysql"
