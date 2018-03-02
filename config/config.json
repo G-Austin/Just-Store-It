@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "root",
-    "password": "",
+    "username": "moderator",
+    "password": "moderator",
     "port": "3306",
 
     "database": "justStoreIt",

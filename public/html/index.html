@@ -199,10 +199,11 @@
 	<div class="footer">
     </div>
     <script>
+		var themap;
    	function initMap() {
 
 		var home = ({lat: 37.871853, lng: -122.258423});
-		map = new google.maps.Map(document.getElementById('map'), {
+		themap = new google.maps.Map(document.getElementById('map'), {
 		    zoom: 15,
 		    center: home,
 		});
