@@ -27,7 +27,7 @@ require("./routes/html-routes.js")(app);
 //sync({force: true}) will wipe out database everytime we restart the server.
 // Starts the server to begin listening
 // =============================================================
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(process.env.PORT || PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

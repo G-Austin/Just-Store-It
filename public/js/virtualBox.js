@@ -26,10 +26,10 @@ $(document).ready(function() {
 
 		        geocoder.geocode({'address': vbAddress}, function(results, status) {
 		            if (status === 'OK') {
-		                //resultsMap.setCenter(results[0].geometry.location);
+		               //resultsMap.setCenter(results[0].geometry.location);
 		                console.log('results', results);
 		                var marker = new google.maps.Marker({
-		                	// center: home1,
+		                	center: results,
 		                    map: themap,
 		                    position: results[0].geometry.location,
 		                });
