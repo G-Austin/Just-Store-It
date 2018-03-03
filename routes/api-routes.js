@@ -2,12 +2,28 @@
 // Dependencies
 // =============================================================
 var db = require("../models");
+var pg = require('pg');
+
 
 // Routes
 // =============================================================
 module.exports = function(app) {
 
-  app.get("/api/all/", function(req, res) {   
+
+    app.get('/db', function (request, response) {
+        pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+            client.query('SELECT * FROM VirtualBox', function(err, result) {
+                done();
+                if (err)
+                { console.error(err); response.send("Error " + err); }
+                else
+                { response.render('pages/db', {results: result.rows} ); }
+            });
+        });
+    });
+
+
+    app.get("/api/all/", function(req, res) {
     db.VirtualBox.findAll({}).then(function(dbVirtualBox) {
         res.json(dbVirtualBox);
       });
